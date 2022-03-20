@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/settings",
+      initialRoute: "/home",
       routes: {
-        "/home": (context) => HomeScreen(),
-        "/settings": (context) => SettingsScreen(),
+        "/home": (context) => const HomeScreen(),
+        "/settings": (context) => const SettingsScreen(),
       },
     );
   }

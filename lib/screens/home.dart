@@ -8,16 +8,46 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/drawer.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  String currentCounter = "New Counter";
+  final Map<String, int> counters = {
+    "New Counter": 0,
+    "Counter #2": 21,
+  };
+
+  changeCounter(String counterName) {
+    _scaffoldKey.currentState!.openEndDrawer();
+    setState(() {
+      currentCounter = counterName;
+    });
+  }
+
+  _incrementCounter() {
+    setState(() {
+      counters[currentCounter] = counters[currentCounter]! + 1;
+    });
+  }
+
+  _decrementCounter() {
+    setState(() {
+      counters[currentCounter] = counters[currentCounter]! - 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("New Counter"),
+        title: Text(currentCounter),
         leading: IconButton(
           tooltip: "List Counters",
           icon: const Icon(FontAwesomeIcons.bars),
@@ -49,14 +79,14 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Scaffold(
         key: _scaffoldKey,
-        drawer: const MyDrawer(),
+        drawer: MyDrawer(counters: counters, changeCounter: changeCounter),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Expanded(
+            Expanded(
               child: Center(
                 child: Text(
-                  "21",
+                  counters[currentCounter].toString(),
                   textScaleFactor: 10,
                 ),
               ),
@@ -69,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                   FontAwesomeIcons.plus,
                   size: 60,
                 ),
-                onPressed: () {},
+                onPressed: _incrementCounter,
               ),
             ),
             Container(
@@ -80,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                   FontAwesomeIcons.minus,
                   size: 60,
                 ),
-                onPressed: () {},
+                onPressed: _decrementCounter,
               ),
             ),
           ],
