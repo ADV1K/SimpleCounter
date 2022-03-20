@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             tooltip: "Settings",
             icon: const Icon(FontAwesomeIcons.gear),
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context, "/settings"),
           ),
         ],
       ),

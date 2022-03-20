@@ -19,7 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         leading: IconButton(
           tooltip: "Go Back",
           icon: const Icon(FontAwesomeIcons.arrowLeft),
-          onPressed: () {},
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -41,6 +41,73 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _checked = value!;
               });
             },
+          ),
+          CheckboxListTile(
+            secondary: const SizedBox(
+              height: double.infinity,
+              child: Icon(
+                Icons.vibration,
+                size: 25,
+              ),
+            ),
+            title: const Text("Turn on vibration"),
+            subtitle: const Text("Vibrate on value changes"),
+            visualDensity: VisualDensity.compact,
+            value: _checked,
+            onChanged: (value) {
+              setState(() {
+                _checked = value!;
+              });
+            },
+          ),
+          CheckboxListTile(
+            secondary: const SizedBox(
+              height: double.infinity,
+              child: Icon(
+                Icons.phone_android,
+                size: 25,
+              ),
+            ),
+            title: const Text("Use hardware buttons"),
+            subtitle: const Text("Change counter value using volume buttons"),
+            visualDensity: VisualDensity.compact,
+            value: _checked,
+            onChanged: (value) {
+              setState(() {
+                _checked = value!;
+              });
+            },
+          ),
+          CheckboxListTile(
+            secondary: const SizedBox(
+              height: double.infinity,
+              child: Icon(
+                FontAwesomeIcons.handMiddleFinger,
+                size: 20,
+              ),
+            ),
+            title: const Text("Tap value to increment"),
+            subtitle:
+                const Text("Increment a counter by tapping the current value"),
+            visualDensity: VisualDensity.compact,
+            value: _checked,
+            onChanged: (value) {
+              setState(() {
+                _checked = value!;
+              });
+            },
+          ),
+          const ListTile(
+            leading: SizedBox(
+              height: double.infinity,
+              child: Icon(
+                Icons.color_lens,
+                size: 25,
+              ),
+            ),
+            title: Text("Theme"),
+            subtitle: Text("Light"),
+            visualDensity: VisualDensity.compact,
           ),
         ],
       ),
