@@ -51,19 +51,37 @@ class HomeScreen extends StatelessWidget {
         key: _scaffoldKey,
         drawer: const MyDrawer(),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              "21",
-              textScaleFactor: 10,
+            const Expanded(
+              child: Center(
+                child: Text(
+                  "21",
+                  textScaleFactor: 10,
+                ),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Icon(FontAwesomeIcons.plus),
+            Container(
+              height: 130,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                child: const Icon(
+                  FontAwesomeIcons.plus,
+                  size: 60,
+                ),
+                onPressed: () {},
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Icon(FontAwesomeIcons.minus),
-              style: const ButtonStyle(),
+            Container(
+              height: 100,
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+              child: ElevatedButton(
+                child: const Icon(
+                  FontAwesomeIcons.minus,
+                  size: 60,
+                ),
+                onPressed: () {},
+              ),
             ),
           ],
         ),
