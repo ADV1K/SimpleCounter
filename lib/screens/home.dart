@@ -4,6 +4,7 @@ TODO:
 
 */
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/drawer.dart';
@@ -35,12 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       counters[currentCounter] = counters[currentCounter]! + 1;
     });
+    HapticFeedback.lightImpact();
   }
 
   _decrementCounter() {
     setState(() {
       counters[currentCounter] = counters[currentCounter]! - 1;
     });
+    HapticFeedback.mediumImpact();
   }
 
   @override
@@ -85,9 +88,12 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Expanded(
               child: Center(
-                child: Text(
-                  counters[currentCounter].toString(),
-                  textScaleFactor: 10,
+                child: GestureDetector(
+                  child: Text(
+                    counters[currentCounter].toString(),
+                    textScaleFactor: 10,
+                  ),
+                  onTap: _incrementCounter,
                 ),
               ),
             ),
