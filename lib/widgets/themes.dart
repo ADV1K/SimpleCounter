@@ -14,5 +14,13 @@ class MyTheme {
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         brightness: Brightness.dark,
+        // primarySwatch: Colors.,
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white, size: 20),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
       );
 }
