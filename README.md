@@ -1,4 +1,4 @@
-# SimpleCounter
+# simple_counter
 A simple counter app made with flutter as a learning exercise. Incomplete and likely will never be completed. 
 
 My first ever flutter app!!
